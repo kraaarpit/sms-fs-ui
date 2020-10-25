@@ -1,0 +1,86 @@
+<div class="container">
+  <form [formGroup]="eventForm" class="form-event" (ngSubmit)="onSubmit()" *ngIf="eventForm">
+    <h3 class="text-center mt-5 mb-3 font-weight-normal">Event Form</h3>
+    <div class="row my-3">
+      <label for="city" class="col-4">City</label>
+      <div class="col-8">
+
+        <input type="text" id="city" name="city" formControlName="city" class="form-control" placeholder="" required
+          autofocus>
+
+        <div *ngIf="city.invalid && city.touched" class="alert alert-danger">
+          <div *ngIf="city.errors.required">City Name is required</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row my-3">
+      <label for="start_date" class="col-4">Start Date</label>
+      <div class="col-8">
+
+        <input type="date" id="start_date" name="start_date" formControlName="start_date" class="form-control"
+          placeholder="" required autofocus>
+        <div *ngIf="start_date.invalid && start_date.touched" class="alert alert-danger">
+          <div *ngIf="start_date.errors.required">Start Date is required</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row my-3">
+      <label for="end_date" class="col-4">End Date</label>
+      <div class="col-8">
+
+        <input type="date" id="end_date" name="end_date" formControlName="end_date" class="form-control" placeholder=""
+          required autofocus>
+        <div *ngIf="end_date.invalid && (end_date.dirty || end_date.touched)" class="alert alert-danger">
+          <div *ngIf="end_date.errors.required">End Date is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="row my-3">
+      <label for="price" class="col-4">Price</label>
+      <div class="col-8">
+
+        <input type="price" id="price" name="price" formControlName="price" class="form-control" placeholder="" required
+          autofocus>
+        <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
+          <div *ngIf="price.errors.required">Price is required</div>
+          <div *ngIf="price.errors.pattern">Price format is wrong</div>
+        </div>
+      </div>
+    </div>
+    <div class="row my-3">
+      <label for="status" class="col-4">Status</label>
+      <div class="col-8">
+
+        <input type="status" id="status" name="status" formControlName="status" class="form-control" placeholder=""
+          required autofocus>
+        <div *ngIf="status.invalid && (status.dirty || status.touched)" class="alert alert-danger">
+          <div *ngIf="status.errors.required">Status is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="row my-3">
+      <label for="color" class="col-4">Color</label>
+      <div class="col-8">
+
+        <input type="color" id="color" name="color" formControlName="color" class="form-control" placeholder="" required
+          autofocus>
+        <div *ngIf="color.invalid && (color.dirty || color.touched)" class="alert alert-danger">
+          <div *ngIf="color.errors.required">Color is required</div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="text-center">
+
+      <button class="btn btn-lg btn-primary mx-auto my-2" [disabled]="eventForm.invalid"
+        type="submit">{{isUpdate? 'Update': 'Create'}}</button>
+    </div>
+
+
+  </form>
+
+</div>

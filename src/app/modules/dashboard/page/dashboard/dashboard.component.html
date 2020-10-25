@@ -1,0 +1,47 @@
+<h1 class="my-3"> Events List</h1>
+
+<a class="btn btn-primary float-right mr-2 my-3" (click)="create()">Create</a>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" (click)="sortToggle('city')">City <i class="fa fa-arrow-up"></i> <i class="fa fa-arrow-down"></i>
+
+      </th>
+      <th scope="col" (click)="sortToggle('start_date')">Start Date <i class="fa fa-arrow-up"></i> <i
+          class="fa fa-arrow-down"></i>
+      </th>
+      <th scope="col" (click)="sortToggle('end_date')">End date <i class="fa fa-arrow-up"></i> <i
+          class="fa fa-arrow-down"></i>
+      </th>
+      <th scope="col" (click)="sortToggle('price')">Price <i class="fa fa-arrow-up"></i> <i
+          class="fa fa-arrow-down"></i>
+      </th>
+      <th scope="col" (click)="sortToggle('status')">Status <i class="fa fa-arrow-up"></i> <i
+          class="fa fa-arrow-down"></i>
+      </th>
+      <th scope="col" (click)="sortToggle('color')">Color <i class="fa fa-arrow-up"></i> <i
+          class="fa fa-arrow-down"></i>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let event of events">
+      <tr>
+        <th scope="row">{{event.city}}</th>
+        <td>{{event.start_date | date}}</td>
+        <td>{{event.end_date | date}}</td>
+        <td>{{event.price}}</td>
+        <td>{{event.status}}</td>
+        <td [style.background-color]="event.color">{{event.color}}</td>
+        <th> <i class="fa fa-edit" (click)="edit(event)"></i> <i class="material-icons"
+            (click)="delete(event)">delete</i>
+        </th>
+      </tr>
+    </ng-container>
+
+
+
+  </tbody>
+</table>
